@@ -115,12 +115,6 @@ class Buttons extends React.Component {
 					<button className="btn btn-success btn-xs" onClick={this.props.clear}>
 					  Clear
 					</button>
-					<button className="btn btn-warning btn-xs" onClick={this.props.slow}>
-					  &lt; Slower
-					</button>
-					<button className="btn btn-warning btn-xs" onClick={this.props.fast}>
-					  Faster &gt;
-					</button>
 					<button className="btn btn-success btn-xs" onClick={this.props.seed}>
 					  Seed
 					</button>
@@ -134,6 +128,14 @@ class Buttons extends React.Component {
 						<MenuItem eventKey="2">40x18</MenuItem>
 					</DropdownButton>
 				</ButtonToolbar>
+				<ButtonToolbar style={{display: 'flex',justifyContent: 'center',marginTop: '5px'}}>
+					<button className="btn btn-warning btn-xs" onClick={this.props.slow}>
+						&lt; Slower
+					</button>
+					<button className="btn btn-warning btn-xs" onClick={this.props.fast}>
+						Faster &gt;
+					</button>
+				</ButtonToolbar>
 			</div>
 			)
 	}
@@ -143,8 +145,8 @@ class Main extends React.Component {
 	constructor() {
 		super();
 		this.speed = 100;
-		this.rows = 18;
-		this.cols = 40;
+		this.rows = 10;
+		this.cols = 20;
 
 		this.state = {
 			generation: 0,
@@ -217,8 +219,8 @@ class Main extends React.Component {
 				this.rows = 18;
 			break;
 			default:
-				this.cols = 40;
-				this.rows = 18;
+				this.cols = 20;
+				this.rows = 10;
 		}
 		this.clear();
 
@@ -274,7 +276,8 @@ class Main extends React.Component {
 					cols={this.cols}
 					selectBox={this.selectBox}
 				/>
-				<h2>Generations: {this.state.generation} <span>Speed: {this.speed}ms</span></h2>
+				<h2>Generations: {this.state.generation}</h2>
+				<h2 style={{marginTop:0}}><span style={{paddingLeft:0}}>Speed: {this.speed}ms</span></h2>
 			</div>
 		);
 	}
